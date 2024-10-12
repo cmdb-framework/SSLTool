@@ -1,17 +1,25 @@
 package tool_core
 
-import "testing"
+import (
+	"fmt"
+	"testing"
+)
 
 func TestCheckLocalCert(*testing.T) {
 	filePath := "../cert/xxx.pem"
-	if _, ok := CheckLocalCert(&filePath); !ok {
+	if data, ok := CheckLocalCert(&filePath); !ok {
 		panic("Test failed")
+	} else {
+		fmt.Println(*data)
 	}
+
 }
 
 func TestCheckRemoteCert(*testing.T) {
-	url := "https://www.baidu.com"
-	if _, ok := CheckRemoteCert(&url); !ok {
+	url := "www.example.com:443"
+	if certs, ok := CheckRemoteCert(&url); !ok {
 		panic("Test failed")
+	} else {
+		fmt.Println((*certs)[0])
 	}
 }
