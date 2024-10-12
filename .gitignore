@@ -2,3 +2,4 @@
 .vscode
 cert
 *.exe
+ssl-tool
