@@ -9,10 +9,10 @@ import (
 )
 
 type CertInfo struct {
-	Subject   string
-	Issuer    string
-	NotBefore string
-	NotAfter  string
+	Subject   string `json:"subject" yaml:"subject"`
+	Issuer    string `json:"issuer" yaml:"issuer"`
+	NotBefore string `json:"not_before" yaml:"not_before"`
+	NotAfter  string `json:"not_after" yaml:"not_after"`
 }
 
 func CheckLocalCert(filePath *string) (*CertInfo, bool) {
