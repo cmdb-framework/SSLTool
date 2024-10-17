@@ -33,7 +33,7 @@ func NewSslToolCmd() *cobra.Command {
 	}
 	rootCmd.Flags().StringVarP(&url, "internet", "i", "", "指定要检测的域名")
 	rootCmd.Flags().StringVarP(&filePath, "file", "f", "", "指定要检测的本地证书文件夹子")
-	rootCmd.Flags().StringVarP(&output, "output", "o", "", "输出的格式，目前支持json")
+	rootCmd.Flags().StringVarP(&output, "output", "o", "", "输出的格式，目前支持json，yaml")
 	return rootCmd
 }
 
@@ -45,7 +45,7 @@ func consolePrint(c *tool_core.CertInfo, o *string) {
 		} else {
 			fmt.Println(string(marshal))
 		}
-	case "yaml":
+	case "yaml", "yml":
 		if marshal, err := yaml.Marshal(*c); err != nil {
 			return
 		} else {
